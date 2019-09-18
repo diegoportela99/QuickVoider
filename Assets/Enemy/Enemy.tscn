@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Assets/Enemy/Script/Player.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Enemy/Script/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Enemy/Trail/Trail.tscn" type="PackedScene" id=3]
 
@@ -11,11 +11,9 @@ extents = Vector2( 3.20867, 3.15745 )
 colors = PoolColorArray( 0, 0, 0, 0, 1, 0, 0, 1 )
 
 [node name="Enemy" type="KinematicBody2D"]
+position = Vector2( 88, 160 )
+rotation = -1.5708
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
-speed = 50
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
