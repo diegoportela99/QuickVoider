@@ -1,10 +1,16 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/Main.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Platform/Platform.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Assets/PlayerProtect/PlayerProtect.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/EnemySpawner.gd" type="Script" id=4]
-[ext_resource path="res://Assets/Enemy/Enemy.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Fonts/Khronopix.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Assets/Platform/Platform.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/PlayerProtect/PlayerProtect.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/EnemySpawner.gd" type="Script" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 2 )
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 1 )
@@ -12,39 +18,61 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer"]
+margin_right = 72.0
+margin_bottom = 62.0
+
+[node name="Label" type="Label" parent="CanvasLayer/GridContainer"]
+margin_right = 67.0
+margin_bottom = 35.0
+custom_fonts/font = SubResource( 1 )
+text = "Enemies 
+Spawned:"
+
+[node name="dt_label" type="Label" parent="CanvasLayer/GridContainer"]
+margin_top = 39.0
+margin_right = 67.0
+margin_bottom = 55.0
+custom_fonts/font = SubResource( 2 )
+
 [node name="Player" type="Node2D" parent="."]
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Platform" parent="Player" instance=ExtResource( 2 )]
+[node name="Platform" parent="Player" instance=ExtResource( 3 )]
 position = Vector2( 88, 160 )
 
-[node name="PlayerProtect" parent="Player" instance=ExtResource( 3 )]
+[node name="PlayerProtect" parent="Player" instance=ExtResource( 4 )]
 position = Vector2( 88, 160 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2( 88, 160 )
 current = true
-zoom = Vector2( 0.8, 0.8 )
 smoothing_enabled = true
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="EnemySpawner" type="Node2D" parent="."]
-visible = false
 position = Vector2( 88, 160 )
-script = ExtResource( 4 )
+script = ExtResource( 5 )
 
-[node name="Enemy" parent="EnemySpawner" instance=ExtResource( 5 )]
-position = Vector2( 210.646, -205.834 )
+[node name="Node2D" type="Node2D" parent="."]
+z_index = -20
 
-[node name="Enemy8" parent="EnemySpawner" instance=ExtResource( 5 )]
-position = Vector2( -144.233, -199.663 )
+[node name="ColorRect" type="ColorRect" parent="Node2D"]
+margin_right = 176.0
+margin_bottom = 320.0
+color = Color( 0.2, 0.411765, 0.486275, 1 )
 
-[node name="Enemy9" parent="EnemySpawner" instance=ExtResource( 5 )]
-position = Vector2( -137.897, 162.171 )
-
-[node name="Enemy10" parent="EnemySpawner" instance=ExtResource( 5 )]
-position = Vector2( 100.442, 148.748 )
+[node name="TextureProgress" type="TextureProgress" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 120.0
+margin_top = 10.0
+margin_right = 169.0
+margin_bottom = 23.0
