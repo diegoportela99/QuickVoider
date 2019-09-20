@@ -21,3 +21,4 @@ func _input(event):
 	
 	if event is InputEventMouseMotion:
 		last = get_global_mouse_position()
+

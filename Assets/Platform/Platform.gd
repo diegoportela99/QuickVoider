@@ -1,7 +1,7 @@
 extends StaticBody2D
 
 var RotateSpeed = 0
-var Radius = 40
+var Radius = 30
 var _centre
 var _angle = 0
 var _set_rotation = 0

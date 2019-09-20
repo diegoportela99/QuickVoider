@@ -40,29 +40,21 @@ func spawn():
 	#x = y/m
 	if gradient > y_pos/x_pos:
 		if pos.x > 0:
-			print("BR")
 			pos.x = -desired_y/gradient
 			changed = true
-			#Bottom right
 			pass
 		else:
-			print("TL")
 			pos.x = desired_y/gradient
 			changed = true
-			#Top left
 			pass
 	elif gradient < -(y_pos/x_pos):
 		if pos.x > 0:
-			print("TR")
 			pos.x = desired_y/gradient
 			changed = true
-			#Top right
 			pass
 		else:
-			print("BL")
 			pos.x = -desired_y/gradient
 			changed = true
-			#Bottom left
 			pass
 	
 	if !changed:
@@ -76,6 +68,8 @@ func spawn():
 	
 	self.add_child(enemy)
 	enemys_spawned+=1
+	
+	enemy.connect("collided", self, "handle_collision")
 	
 	enemy.look_at(get_parent().get_node("Player/PlayerProtect").position)
 	enemy._set_rotation()
@@ -93,3 +87,6 @@ func despawn():
 	for enemy in get_children():
 		if enemy.position.x > screen_x*1.75 or enemy.position.x < -screen_x*1.75 or enemy.position.y > screen_y*1.75 or enemy.position.y < -screen_y*1.75:
 			remove_child(enemy)
+
+func handle_collision(collision):
+	print(collision.collider.name)

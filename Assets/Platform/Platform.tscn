@@ -4,7 +4,7 @@
 [ext_resource path="res://Assets/Platform/platform.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 12.0454, 3.17908 )
+extents = Vector2( 9.67226, 2.59399 )
 
 [node name="Platform" type="StaticBody2D"]
 position = Vector2( 85.8941, 134.716 )
@@ -12,14 +12,14 @@ script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 rotation = 1.5708
-scale = Vector2( 0.75, 0.75 )
+scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 2 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 2.3, 0 )
+position = Vector2( 1.78, 0 )
 rotation = 1.5708
 shape = SubResource( 1 )
 __meta__ = {
