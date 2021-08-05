@@ -2,6 +2,17 @@ extends Node2D
 
 const _enemy = preload("res://Assets/Enemy/Enemy.tscn")
 
+enum type {
+	bad_type_1, #color red -> hit away = points
+	good_type_1, #color blue
+	powerup_type_1, #color green
+	powerup_type_2, #color orange
+	powerup_type_3 #color purple
+}
+
+func randType():
+	return type.keys()[int(rand_range(0,2))]
+
 const screen_x = 88
 const screen_y = 160
 
@@ -65,6 +76,10 @@ func spawn():
 	
 	pos.y = pos.x*gradient
 	enemy.position = pos
+	print(randType())
+	#if not enemy.type:
+		#print(randType())
+		#enemy.type = str(randType())
 	
 	self.add_child(enemy)
 	enemys_spawned+=1
@@ -90,3 +105,4 @@ func despawn():
 
 func handle_collision(collision):
 	print(collision.collider.name)
+	print(collision.collider)
